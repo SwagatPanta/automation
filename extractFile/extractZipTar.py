@@ -2,6 +2,7 @@
 
 import argparse
 import tarfile
+import zipfile
 
 parser=argparse.ArgumentParser()
 parser.add_argument('--f', '--filePath', required=True, dest='filePath', type=str, help="file path to be extracted ")
@@ -17,7 +18,6 @@ elif (filePath.endswith("tar")):
     tar = tarfile.open(filePath, "r:")
     tar.extractall()
     tar.close()
-elif (filePath.endswith("zip")):
-    tar = tarfile.open(filePath, "r:")
-    tar.extractall()
-    tar.close()
+else:
+    zip = zipfile.ZipFile(filePath)
+    zip.extractall()
